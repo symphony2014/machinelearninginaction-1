@@ -88,9 +88,12 @@ def retrieveTree(i):
 
 import treePlotter
 import trees
-myDat,labels=trees.createDataSet()
-
-myTree=treePlotter.retrieveTree(0)
-result=trees.classify(myTree,labels,[1,0])
-
-treePlotter.createPlot(myTree)
+import os
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_path = "lenses.txt"
+abs_file_path = os.path.join(script_dir, rel_path)
+fr=open(abs_file_path)
+lenses=[inst.strip().split('\t') for inst in fr.readlines()]
+lensesLabels=['age','prescript','astigmatic','tearRate']
+lensesTree=trees.createTree(lenses,lensesLabels)
+treePlotter.createPlot(lensesTree)

@@ -49,7 +49,8 @@ def chooseBestFeatureToSplit(dataSet):
         for value in uniqueVals:
             subDataSet = splitDataSet(dataSet, i, value)
             prob = len(subDataSet)/float(len(dataSet))
-            newEntropy += prob * calcShannonEnt(subDataSet)     
+            newEntropy += prob * calcShannonEnt(subDataSet
+)     
         infoGain = baseEntropy - newEntropy     #calculate the info gain; ie reduction in entropy
         if (infoGain > bestInfoGain):       #compare this to the best gain so far
             bestInfoGain = infoGain         #if better than current best, set to best
